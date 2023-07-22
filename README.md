@@ -1,7 +1,11 @@
 # diffusion-models
-This repository implements a diffusion model
+
+This repository describes the theory behind diffusion models and implements several variations of a diffusion model.
+
+Repository content list:
 
 - [diffusion-models](#diffusion-models)
+- [Theory](#theory)
   - [Inference: sampling](#inference-sampling)
   - [NN architecture](#nn-architecture)
   - [Training](#training)
@@ -10,7 +14,8 @@ This repository implements a diffusion model
 - [Run](#run)
 - [References](#references)
 
-# Theory
+
+# Theory
 
 ## Inference: sampling
 
