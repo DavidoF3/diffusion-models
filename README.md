@@ -8,6 +8,7 @@ This repository implements a diffusion model
   - [Controlling NN](#controlling-nn)
   - [Speeding up diffusion models](#speeding-up-diffusion-models)
 - [Run](#run)
+- [References](#references)
 
 # Theory
 
@@ -91,3 +92,7 @@ pip install -e .
 
 Open `notebooks/sampling_and_training.ipynb` and run cells. Notice that:
 * Pretrained weight files and training data specified in the notebook are not part of the repo.
+
+# References
+
+References: deeplearning.ai
