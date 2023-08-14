@@ -23,9 +23,11 @@ Diffusion models attempt to predict the noise of an image. This noise is then su
 
 ```Iteratively move from a fully diffused (noisy) image to a clear image```
 
-NN expects as input a noisy sample with normally distributed noise. After subtracting the predicted noise from the sample, the noise in the sample is no longer normally distributed. Hence, before moving to the next inference iteration, we must add some noise to the sample (scaled based on the time step of inference), to make the noise in the sample normally distributed again.
+NN expects as input a noisy sample with normally distributed noise. After subtracting the predicted noise from the sample, the noise in the sample is no longer normally distributed. Hence, before moving to the next inference iteration, we must add some noise to the sample (scaled based on the time step of inference), to make the noise in the sample normally distributed again. 
 
-`Denoising Diffusion Probabilistic Model (DDPM)`: sampling algorithm used for subtracting noise from the image.
+`Denoising Diffusion Probabilistic Model (DDPM)`: this is a sampling algorithm used for subtracting noise from the image + add noise back (in line with above explanation).
+
+More details on denoising are given in [Section: Speeding up diffusion models](#speeding-up-diffusion-models).
 
 ## NN architecture
 
