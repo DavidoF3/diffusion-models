@@ -5,7 +5,8 @@ This repository describes the theory behind diffusion models and implements seve
 Repository content list:
 
 - [diffusion-models](#diffusion-models)
-- [Theory](#theory)
+- [Repository structure](#repository-structure)
+- [Theory - diffusion models](#theory---diffusion-models)
   - [Inference: sampling](#inference-sampling)
   - [NN architecture](#nn-architecture)
   - [Training](#training)
@@ -14,8 +15,17 @@ Repository content list:
 - [Run](#run)
 - [References](#references)
 
+# Repository structure
 
-# Theory
+The subfolder [notebooks](/notebooks/) contains the code in this repository. 
+* The notebook [basics_training_and_inference.ipynb](/notebooks/0_basics_training_and_inference.ipynb) goes through: 1) inference of a pre-trained diffusion model (using DDPM sampling), 2) training of a diffusion model without and with context embedding (using DDPM sampling), 3) inference of a pre-trained diffusion model (using DDIM sampling).
+* The notebook [wandb_training.ipynb](/notebooks/1_wandb_training.ipynb) goes through: the steps to track the training progress of a diffusion model by using `W&B`. A context embedding and DDPM sampling are used during training.
+* The notebook [wandb_inference.ipynb](/notebooks/2_wandb_inference.ipynb) goes through: 1) pulling a diffusion model registered in the W&B model registry, 2) running two different sampling methods (DDPM and DDIM) on a range of noise inputs, 3) uploading the results to W&B using W&B Tables, 4) comparing the sampling results (see [report](https://wandb.ai/doc93/diff_model_sprite/reports/Sampling-DDPM-vs-DDIM--Vmlldzo1MTQ5OTQ5)).
+
+The subfolder [utils](/utils/)  contains supporting functions and classes used by the notebooks.
+
+
+# Theory - diffusion models
 
 ## Inference: sampling
 
@@ -23,9 +33,11 @@ Diffusion models attempt to predict the noise of an image. This noise is then su
 
 ```Iteratively move from a fully diffused (noisy) image to a clear image```
 
-NN expects as input a noisy sample with normally distributed noise. After subtracting the predicted noise from the sample, the noise in the sample is no longer normally distributed. Hence, before moving to the next inference iteration, we must add some noise to the sample (scaled based on the time step of inference), to make the noise in the sample normally distributed again.
+NN expects as input a noisy sample with normally distributed noise. After subtracting the predicted noise from the sample, the noise in the sample is no longer normally distributed. Hence, before moving to the next inference iteration, we must add some noise to the sample (scaled based on the time step of inference), to make the noise in the sample normally distributed again. 
 
-`Denoising Diffusion Probabilistic Model (DDPM)`: sampling algorithm used for subtracting noise from the image.
+`Denoising Diffusion Probabilistic Model (DDPM)`: this is a sampling algorithm used for subtracting noise from the image + add noise back (in line with above explanation).
+
+More details on denoising are given in [Section: Speeding up diffusion models](#speeding-up-diffusion-models).
 
 ## NN architecture
 
