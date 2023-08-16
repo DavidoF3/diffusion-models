@@ -9,6 +9,8 @@ from utils.wandb_utils import *
 
 import wandb
 
+# The content of this script is the same as that in: wandb_training.ipynb  !!!!!!
+
 # Setup --------------------------------------------------
 
 # we are storing the parameters to be logged to wandb
